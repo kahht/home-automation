@@ -31,8 +31,8 @@ static const char *ajax_reply_start =
   "\r\n";
 
 // Global Macros
-#define SbcSerial 368024
-#define SbcSystemPassword "g"
+#define SbcSerial 250000
+#define SbcSystemPassword "PASSWORD"
 #define TempSensorIndex 0
 #define HumiditySensorIndex 1
 #define LightSensorIndex 2
