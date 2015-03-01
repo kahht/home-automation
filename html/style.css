@@ -1,0 +1,29 @@
+table
+{
+	width: 250px;
+	border-collapse:collapse;
+}
+
+table, td {
+	border: 1px solid black;
+}
+
+td
+{
+	padding:10px;
+}
+
+td.sensorvalue {
+	width: 120px;
+	text-align:right;
+}
+
+.progbarl, .progbarc, .progbarcf, .progbarr {
+	height: 14px;
+	border: 0px;
+	vertical-align: text-top;
+}
+
+.progbarl, .progbarr {
+	width: 2px;
+}

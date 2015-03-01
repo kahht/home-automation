@@ -1,0 +1,115 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>Home Automation Example</title>
+        <link rel="stylesheet" type="text/css" href="style.css" />
+        <script language="javascript" src="jquery-1.2.6.min.js" ></script>
+        
+        <script type="text/javascript">
+            
+            $(document).ready(function() {
+                              
+                              //Load right away
+                              $("#temp").load('/ajax/get_data?temp');
+                              $("#humidity").load('/ajax/get_data?humidity');
+                              $("#light").load('/ajax/get_data?light');
+                              $("#sound").load('/ajax/get_data?sound');
+                              $("#output_light1").load('/ajax/get_data?output_light1');
+                              
+                              //Set up timers to keep the data coming...
+                              setInterval(function() {
+                                          $("#temp").load('/ajax/get_data?temp');
+                                          $("#humidity").load('/ajax/get_data?humidity');
+                                          $("#light").load('/ajax/get_data?light');
+                                          $("#sound").load('/ajax/get_data?sound');
+                                          }, 250);
+                              
+                              setInterval(function() {
+                                          $("#output_light1").load('/ajax/get_data?output_light1');
+                                          }, 300);
+                              
+                              $.ajaxSetup({ cache: false });
+                              
+                              });
+                              
+                              window.onload = function() {
+                                  var turnon1 = document.getElementById("light1On");
+                                  var turnoff1 = document.getElementById("light1Off");
+                                  
+                                  turnon1.onclick = function() {
+                                      $("light1On").load('/ajax/send_message?light1On');
+                                      
+                                      return false;
+                                  }
+                                  
+                                  turnoff1.onclick = function() {
+                                      $("light1Off").load('/ajax/send_message?light1Off');
+                                      
+                                      return false;
+                                  }
+                              }
+        
+            </script>
+        
+    </head>
+    <body>
+        <h2>Sensors</h2>
+        <table>
+            <tr>
+                <td>Temperature</td>
+                <td class="sensorvalue">
+                    <div id="temp">Please Wait...</div>
+                </td>
+            </tr>
+            <tr>
+                <td>Humidity</td>
+                <td class="sensorvalue">
+                    <div id="humidity">Please Wait...</div>
+                </td>
+            </tr>
+            <tr>
+                <td>Light</td>
+                <td class="sensorvalue">
+                    <div id="light">680 lux</div>
+                </td>
+            </tr>
+            <tr>
+                <td>Sound</td>
+                <td class="sensorvalue">
+                    <div id="sound">42.1 dB</div>
+                </td>
+            </tr>
+        </table>
+        
+        <h2>Controllers</h2>
+        <table>
+            <tr>
+                <td>Light is...</td>
+                <td class="sensorvalue">
+                    <div id="output_light1">Please Wait...</div>
+                </td>
+            </tr>
+            <tr>
+                
+                <td><div id="light1On">Turn Light On
+                    <img src="images/lightbulbon.jpg"  id="nolight1On" width="120" /></a>
+                </div></td>
+                <td><div id="light1Off">Turn Light Off
+                    <img src="images/lightbulboff.jpg"  id="nolight1Off" width="120" />
+                </div></td>
+                
+                
+                
+            </tr>
+        </table>
+        
+    </body>
+</html>
+
+
+
+
+
+
+
